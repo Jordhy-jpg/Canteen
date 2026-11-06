@@ -12,7 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('home', compact('categories'));
     }
 
     /**
@@ -36,7 +37,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $categories = Category::all();
+        $products = $category->products()->get();
+        return view('category.show', compact('category', 'products', 'categories'));
     }
 
     /**
