@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @livewireStyles
     <title>@yield('title')</title>
 </head>
 
@@ -25,7 +26,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fs-5">
                         <li class="nav-item ">
-                            <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
+                            <a class="nav-link" aria-current="page" href="{{ route('home') }}" wire:navigate>Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
@@ -35,7 +36,7 @@
                             <ul class="dropdown-menu">
                                 @forelse ($categories as $category)
                                     <li>
-                                        <a class="dropdown-item" href="{{ route('category.show', $category) }}">
+                                        <a class="dropdown-item" href="{{ route('category.show', $category) }}" wire:navigate>
                                             {{ $category->name }}
                                         </a>
                                     </li>
@@ -46,7 +47,7 @@
                         </li>
                         {{-- TODO: Create Contact Us route --}}
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('contact') }}">Contact Us</a>
+                            <a class="nav-link " href="{{ route('contact') }}" wire:navigate>Contact Us</a>
                         </li>
                     </ul>
                 </div>
@@ -56,6 +57,7 @@
     <div class="m-4">
         @yield('body')
     </div>
+    @livewireScripts
 </body>
 
 </html>
